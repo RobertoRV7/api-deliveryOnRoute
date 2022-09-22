@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@graphql": [
+        "src/graphql"
+      ],
+      "@queries/*": [
+        "src/graphql/queries/*"
+      ],
+      "@mutations/*": [
+        "src/graphql/mutations/*"
+      ],
+      "@type_defs/*": [
+        "src/graphql/type_defs/*"
+      ],
+      "@database": [
+        "src/database"
+      ],
+      "@entities/*": [
+        "src/database/entities/*"
+      ]
+    },
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

@@ -7,11 +7,11 @@ import {
   GraphQLString,
 } from "graphql";
 
-export const RegionType = new GraphQLObjectType({
-  name: "Region",
-  description: "Datos de la region.",
+export const RolType = new GraphQLObjectType({
+  name: "Rol",
+  description: "Datos del Rol.",
   fields: () => ({
-    idRegion: { type: GraphQLID },
+    idRol: { type: GraphQLID },
     nombre: { type: GraphQLString },
     descripcion: { type: GraphQLString },
     fechaCreacion: { type: GraphQLString },
@@ -19,14 +19,14 @@ export const RegionType = new GraphQLObjectType({
   }),
 });
 
-export const RegionListResultType = new GraphQLObjectType({
-  name: "RegionListResult",
-  description: "Listado de regiones agregadas.",
+export const RolListResultType = new GraphQLObjectType({
+  name: "RolListResult",
+  description: "Listado de roles agregados.",
   fields: () => ({
     successful: { type: GraphQLBoolean },
     error: { type: GraphQLString },
-    regionList: {
-      type: new GraphQLList(RegionType),
+    rolList: {
+      type: new GraphQLList(RolType),
     },
   }),
 });

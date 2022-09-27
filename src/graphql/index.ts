@@ -9,6 +9,10 @@ import { GET_ALL_REGIONES } from "@queries/region";
 import { GET_ALL_BODEGAS } from "@queries/bodega";
 import { CREATE_REGION, DELETE_REGION, UPDATE_REGION_BY_ID } from "@mutations/region";
 import { CREATE_BODEGA, DELETE_BODEGA, UPDATE_BODEGA_BY_ID } from "@mutations/bodega";
+import { GET_ALL_USUARIOS_MOVIL } from "@queries/usuarioMovil";
+import { GET_ALL_ROLES } from "@queries/rol";
+import { CREATE_USUARIO_MOVIL, DELETE_USUARIOMOVIL, UPDATE_USUARIO_MOVIL_BY_ID } from "@mutations/usuarioMovil";
+import { CREATE_ROL, DELETE_ROL, UPDATE_ROL_BY_ID } from "@mutations/rol";
 
 const Query = new GraphQLObjectType({
   name: "Query",
@@ -18,7 +22,9 @@ const Query = new GraphQLObjectType({
     getAllEmpersas: GET_ALL_EMPRESAS,
     getAllRepartidores : GET_ALL_REPARTIDORES,
     getAllRegiones : GET_ALL_REGIONES,
-    getAllBodegas : GET_ALL_BODEGAS
+    getAllBodegas : GET_ALL_BODEGAS,
+    getAllUsuariosMovil : GET_ALL_USUARIOS_MOVIL,
+    getAllRoles : GET_ALL_ROLES
   },
 });
 
@@ -44,8 +50,15 @@ const Mutation = new GraphQLObjectType({
 
     createBodega : CREATE_BODEGA,
     updateBodega : UPDATE_BODEGA_BY_ID,
-    deleteBodega : DELETE_BODEGA
+    deleteBodega : DELETE_BODEGA,
 
+    createUsuarioMovil : CREATE_USUARIO_MOVIL,
+    updateUsuarioMovil : UPDATE_USUARIO_MOVIL_BY_ID,
+    delelteUsuarioMovil : DELETE_USUARIOMOVIL,
+
+    createRol : CREATE_ROL,
+    updateRol : UPDATE_ROL_BY_ID,
+    deleteRol : DELETE_ROL
   
   },
 });

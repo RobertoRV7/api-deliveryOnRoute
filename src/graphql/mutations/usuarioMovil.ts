@@ -2,7 +2,7 @@ import { UsuarioMovil } from "@entities/usuarioMovil";
 import { MessageType, msg } from "@type_defs/message";
 import { auth } from "@utils/auth";
 import { Logger } from "@utils/logger";
-import { GraphQLString } from "graphql";
+import { GraphQLID, GraphQLString } from "graphql";
 
 export const CREATE_FIRST_ADMIN_MOVIL = {
   type: MessageType,
@@ -68,6 +68,50 @@ export const CREATE_USUARIO_MOVIL = {
     }
 
     return msg.replySuccess(`Usuario ${usuario} creado!`);
+  },
+};
+
+export const UPDATE_USUARIO_MOVIL_BY_ID = {
+  type: MessageType,
+  description: "Actualizar USUARIO by Id",
+  args: {
+    idUsuarioMovil: { type: GraphQLID },
+    usuario: { type: GraphQLString },
+    password: { type: GraphQLString },
+    rol: {type: GraphQLID }
+  },
+  async resolve(parent: any, args: any, req: any) {
+    Logger.debug("mutations.usuarioMovil.UPDATE_USUARIOMOVIL_BY_ID");
+    const { idUsuarioMovil, usuario, password, rol } = args;
+    try {
+      auth.verifyAuth(req);
+      await UsuarioMovil.update(
+        { idUsuarioMovil },
+        { usuario, password: await auth.encript(password), rol}
+      );
+    } catch (error) {
+      return msg.replyError(error);
+    }
+    return msg.replySuccess(`Empresa ${usuario} actualizada.`);
+  },
+};
+
+export const DELETE_USUARIOMOVIL = {
+  type: MessageType,
+  description: "Borrar usuaario por Id",
+  args: {
+    idUsuario: { type: GraphQLID },
+  },
+  async resolve(parent: any, args: any, req: any) {
+    Logger.debug("mutations.usuarioMovil.DELETE_USUARIOMOVIL");
+    try {
+      auth.verifyAuth(req);
+      await UsuarioMovil.delete(args.idUsuario);
+      Logger.debug(`Usuarui con el Id: ${args.idUsuarioMovil} eliminado!`);
+      return msg.replySuccess("Usuario eliminado");
+    } catch (error) {
+      return msg.replyError(error);
+    }
   },
 };
 

@@ -1,13 +1,21 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, CreateDateColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Permiso } from "./permiso";
 
 @Entity({name: "PermisoPorRol"})
 export class PermisoPorRol extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id!: number;
+
+
+  @CreateDateColumn()
+  fechaCreacion!: Date;
   @Column()
-  name!: string;
-  @Column({ unique: true })
-  username!: string;
-  @Column()
-  password!: string;
+  usuarioCreacion!: string;
+
+  @OneToOne(type => Permiso)
+  @JoinColumn()
+  permiso!: Permiso;
+
+  @OneToOne(type => Rol)
+  @JoinColumn()
+  rol!: Rol;
+
 }

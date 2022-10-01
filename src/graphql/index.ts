@@ -13,6 +13,10 @@ import { GET_ALL_USUARIOS_MOVIL } from "@queries/usuarioMovil";
 import { GET_ALL_ROLES } from "@queries/rol";
 import { CREATE_USUARIO_MOVIL, DELETE_USUARIOMOVIL, UPDATE_USUARIO_MOVIL_BY_ID } from "@mutations/usuarioMovil";
 import { CREATE_ROL, DELETE_ROL, UPDATE_ROL_BY_ID } from "@mutations/rol";
+import { CREATE_PERMISO, DELETE_PERMISO, UPDATE_PERMISO_BY_ID } from "@mutations/permiso";
+import { CREATE_PERMISO_POR_ROL } from "@mutations/permisoPorRol";
+import { GET_ALL_PERMISOS } from "@queries/permiso";
+import { GET_ALL_PERMISOS_POR_ROL } from "@queries/permisoPorRol";
 
 const Query = new GraphQLObjectType({
   name: "Query",
@@ -24,7 +28,9 @@ const Query = new GraphQLObjectType({
     getAllRegiones : GET_ALL_REGIONES,
     getAllBodegas : GET_ALL_BODEGAS,
     getAllUsuariosMovil : GET_ALL_USUARIOS_MOVIL,
-    getAllRoles : GET_ALL_ROLES
+    getAllRoles : GET_ALL_ROLES,
+    getAllPermisos : GET_ALL_PERMISOS,
+    getAllPermisosPorRol : GET_ALL_PERMISOS_POR_ROL
   },
 });
 
@@ -58,7 +64,16 @@ const Mutation = new GraphQLObjectType({
 
     createRol : CREATE_ROL,
     updateRol : UPDATE_ROL_BY_ID,
-    deleteRol : DELETE_ROL
+    deleteRol : DELETE_ROL,
+
+    createPermiso : CREATE_PERMISO,
+    updatePermiso : UPDATE_PERMISO_BY_ID,
+    deletePermiso : DELETE_PERMISO,
+
+    createPermisoPorRol : CREATE_PERMISO_POR_ROL,
+    updatePermisoPorRol : UPDATE_PERMISO_BY_ID,
+    deletePermisoPorRol : DELETE_PERMISO,
+
   
   },
 });

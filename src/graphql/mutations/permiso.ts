@@ -1,4 +1,4 @@
-import { Permiso, Region } from "@entities/permiso";
+import { Permiso } from "@entities/permiso";
 import { MessageType, msg } from "@type_defs/message";
 import { auth } from "@utils/auth";
 import { Logger } from "@utils/logger";
@@ -60,7 +60,7 @@ export const UPDATE_PERMISO_BY_ID = {
     const { idPermiso, nombre, descripcion, accion } = args;
     try {
       auth.verifyAuth(req);
-      await Region.update(
+      await Permiso.update(
         { idPermiso },
         { nombre, descripcion, accion}
       );

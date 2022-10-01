@@ -27,7 +27,7 @@ export const PermisoPorRolListResultType = new GraphQLObjectType({
     successful: { type: GraphQLBoolean },
     error: { type: GraphQLString },
     repartidorList: {
-      type: new GraphQLList(PermisosPorRolType),
+      type: new GraphQLList(PermisoPorRolType),
     },
   }),
 });

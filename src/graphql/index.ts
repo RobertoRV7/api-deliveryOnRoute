@@ -11,12 +11,18 @@ import { CREATE_REGION, DELETE_REGION, UPDATE_REGION_BY_ID } from "@mutations/re
 import { CREATE_BODEGA, DELETE_BODEGA, UPDATE_BODEGA_BY_ID } from "@mutations/bodega";
 import { GET_ALL_USUARIOS_MOVIL } from "@queries/usuarioMovil";
 import { GET_ALL_ROLES } from "@queries/rol";
-import { CREATE_USUARIO_MOVIL, DELETE_USUARIOMOVIL, UPDATE_USUARIO_MOVIL_BY_ID } from "@mutations/usuarioMovil";
+import {  CREATE_USUARIO_WEB,  DELETE_USUARIOWEB, UPDATE_USUARIO_WEB_BY_ID } from "@mutations/usuarioWeb";
 import { CREATE_ROL, DELETE_ROL, UPDATE_ROL_BY_ID } from "@mutations/rol";
 import { CREATE_PERMISO, DELETE_PERMISO, UPDATE_PERMISO_BY_ID } from "@mutations/permiso";
 import { CREATE_PERMISO_POR_ROL } from "@mutations/permisoPorRol";
 import { GET_ALL_PERMISOS } from "@queries/permiso";
 import { GET_ALL_PERMISOS_POR_ROL } from "@queries/permisoPorRol";
+import { CREATE_SUPERVISOR, DELETE_SUPERVISOR, UPDATE_SUPERVISOR_BY_ID } from "@mutations/supervisor";
+import { CREATE_REPARTIDOR_POR_SUPERVISOR, DELETE_REPARTIDOR_POR_SUPERVISOR } from "@mutations/repartidorPorSupervisor";
+import { GET_ALL_SUPERVISORES } from "@queries/supervisor";
+import { GET_ALL_REPARTIDORES_POR_SUPERVISOR } from "@queries/repartidorPorSupervisor";
+import { GET_ALL_USUARIOS_WEB } from "@queries/usuarioWeb";
+import { CREATE_USUARIO_MOVIL, DELETE_USUARIOMOVIL, UPDATE_USUARIO_MOVIL_BY_ID } from "@mutations/usuarioMovil";
 
 const Query = new GraphQLObjectType({
   name: "Query",
@@ -30,7 +36,10 @@ const Query = new GraphQLObjectType({
     getAllUsuariosMovil : GET_ALL_USUARIOS_MOVIL,
     getAllRoles : GET_ALL_ROLES,
     getAllPermisos : GET_ALL_PERMISOS,
-    getAllPermisosPorRol : GET_ALL_PERMISOS_POR_ROL
+    getAllPermisosPorRol : GET_ALL_PERMISOS_POR_ROL,
+    getAllSupervisores : GET_ALL_SUPERVISORES,
+    getAllRepartidoresPorSupervisor : GET_ALL_REPARTIDORES_POR_SUPERVISOR,
+    getAllUsuariosWeb : GET_ALL_USUARIOS_WEB
   },
 });
 
@@ -71,9 +80,18 @@ const Mutation = new GraphQLObjectType({
     deletePermiso : DELETE_PERMISO,
 
     createPermisoPorRol : CREATE_PERMISO_POR_ROL,
-    updatePermisoPorRol : UPDATE_PERMISO_BY_ID,
     deletePermisoPorRol : DELETE_PERMISO,
 
+    createSupervisor : CREATE_SUPERVISOR,
+    updateSupervisor : UPDATE_SUPERVISOR_BY_ID,
+    deleteSupervisor : DELETE_SUPERVISOR,
+
+    createRepartidorPorSupervisor : CREATE_REPARTIDOR_POR_SUPERVISOR,
+    deleteRepartidorPorSupervisor : DELETE_REPARTIDOR_POR_SUPERVISOR,
+
+    createUsuarioWeb : CREATE_USUARIO_WEB,
+    updateUsuarioWeb : UPDATE_USUARIO_WEB_BY_ID,
+    deteleUsuarioWeb : DELETE_USUARIOWEB
   
   },
 });

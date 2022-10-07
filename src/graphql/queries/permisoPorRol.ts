@@ -1,13 +1,14 @@
 import { Permiso } from "@entities/permiso";
 import { PermisoPorRol } from "@entities/permisoPorRol";
 import { replyError, PermisoListResultType } from "@type_defs/permiso";
+import { PermisoPorRolListResultType } from "@type_defs/permisoPorRol";
 import { auth } from "@utils/auth";
 import { Logger } from "@utils/logger";
 import { GraphQLID } from "graphql";
 import { Like } from "typeorm";
 
 export const GET_ALL_PERMISOS_POR_ROL = {
-  type: PermisoListResultType,
+  type: PermisoPorRolListResultType,
   args: {
     idRol: { type: GraphQLID },
   },
@@ -22,7 +23,7 @@ export const GET_ALL_PERMISOS_POR_ROL = {
       return replyError(error);
     }
 
-    return { successful: true, regionList: PermisoPorRol.find({
+    return { successful: true, repartidorPorSupervisorList: PermisoPorRol.find({
       select: ["permiso"],
       where:{
         rol: rol

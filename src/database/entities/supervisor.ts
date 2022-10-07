@@ -1,13 +1,24 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Empresa } from "./empresa";
 
 @Entity({name: "Supervisor"})
 export class Supervisor extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number;
-  @Column()
-  name!: string;
+  idSupervisor!: number;
   @Column({ unique: true })
-  username!: string;
+  cui!: string;
   @Column()
-  password!: string;
+  nombre!: string;
+  @Column()
+  apellido!: string;
+  @Column()
+  supervisorPapa!: number;
+  @CreateDateColumn()
+  fechaCreacion!: Date;
+  @Column()
+  usuarioCreacion!: string;
+  
+  
+  @ManyToOne(type => Empresa, empresa => empresa.repartidores) 
+  empresa!: Empresa;
 }

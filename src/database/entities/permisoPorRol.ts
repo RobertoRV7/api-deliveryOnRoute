@@ -5,6 +5,8 @@ import { Rol } from "./rol";
 @Entity({name: "PermisoPorRol"})
 export class PermisoPorRol extends BaseEntity {
 
+  @PrimaryGeneratedColumn()
+  idPermisoPorRol!: number;
 
   @CreateDateColumn()
   fechaCreacion!: Date;

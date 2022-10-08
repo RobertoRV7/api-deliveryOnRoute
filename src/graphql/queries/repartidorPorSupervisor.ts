@@ -25,7 +25,7 @@ export const GET_ALL_REPARTIDORES_POR_SUPERVISOR = {
     return { successful: true, repartidoresPorSupervisorList: RepartidorPorSupervisor.find({
       select: ["repartidor"],
       where:{
-        repartidor: supervisor
+        supervisor: supervisor
       },
       relations: ["repartidor"]
     })};

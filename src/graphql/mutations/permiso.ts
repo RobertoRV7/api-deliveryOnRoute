@@ -15,11 +15,12 @@ export const CREATE_PERMISO = {
     descripcion: { type: GraphQLString },
     accion: { type: GraphQLString },
     usuarioCreacion: { type: GraphQLString },
+    empresa: { type: GraphQLID },
   },
   async resolve(parent: any, args: any, req: any) {
     Logger.debug("graphql.mutation.permiso.CREATE_PERMISO");
 
-    const { nombre, descripcion, accion, usuarioCreacion } = args;
+    const { nombre, descripcion, accion, usuarioCreacion, empresa } = args;
 
     try {
       auth.verifyAuth(req);
@@ -35,6 +36,7 @@ export const CREATE_PERMISO = {
         descripcion,
         accion,
         usuarioCreacion,
+        empresa
       });
     } catch (error) {
       return msg.replyError(error);
@@ -54,15 +56,16 @@ export const UPDATE_PERMISO_BY_ID = {
     nombre: { type: GraphQLString },
     descripcion: { type: GraphQLString },
     accion: { type: GraphQLString },
-  },
+    empresa: { type: GraphQLID }
+    },
   async resolve(parent: any, args: any, req: any) {
     Logger.debug("mutations.permiso.UPDATE_PERMISO_BY_ID");
-    const { idPermiso, nombre, descripcion, accion } = args;
+    const { idPermiso, nombre, descripcion, accion, empresa } = args;
     try {
       auth.verifyAuth(req);
       await Permiso.update(
         { idPermiso },
-        { nombre, descripcion, accion}
+        { nombre, descripcion, accion, empresa}
       );
     } catch (error) {
       return msg.replyError(error);

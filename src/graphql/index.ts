@@ -11,7 +11,7 @@ import { CREATE_REGION, DELETE_REGION, UPDATE_REGION_BY_ID } from "@mutations/re
 import { CREATE_BODEGA, DELETE_BODEGA, UPDATE_BODEGA_BY_ID } from "@mutations/bodega";
 import { GET_ALL_USUARIOS_MOVIL } from "@queries/usuarioMovil";
 import { GET_ALL_ROLES } from "@queries/rol";
-import {  CREATE_USUARIO_WEB,  DELETE_USUARIOWEB, UPDATE_USUARIO_WEB_BY_ID } from "@mutations/usuarioWeb";
+import {  CREATE_USUARIO_WEB,  DELETE_USUARIOWEB, LOGIN_USUARIO_WEB, UPDATE_USUARIO_WEB_BY_ID } from "@mutations/usuarioWeb";
 import { CREATE_ROL, DELETE_ROL, UPDATE_ROL_BY_ID } from "@mutations/rol";
 import { CREATE_PERMISO, DELETE_PERMISO, UPDATE_PERMISO_BY_ID } from "@mutations/permiso";
 import { CREATE_PERMISO_POR_ROL } from "@mutations/permisoPorRol";
@@ -91,7 +91,8 @@ const Mutation = new GraphQLObjectType({
 
     createUsuarioWeb : CREATE_USUARIO_WEB,
     updateUsuarioWeb : UPDATE_USUARIO_WEB_BY_ID,
-    deteleUsuarioWeb : DELETE_USUARIOWEB
+    deteleUsuarioWeb : DELETE_USUARIOWEB,
+    loginWeb : LOGIN_USUARIO_WEB
   
   },
 });

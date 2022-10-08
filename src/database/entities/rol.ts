@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Empresa } from "./empresa";
 
 @Entity({name: "Rol"})
 export class Rol extends BaseEntity {
@@ -12,4 +13,7 @@ export class Rol extends BaseEntity {
   fechaCreacion!: Date;
   @Column()
   usuarioCreacion!: string;
+
+  @ManyToOne(type => Empresa, empresa => empresa.roles) 
+  empresa!: Empresa;
 }

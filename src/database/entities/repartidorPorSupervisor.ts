@@ -5,6 +5,8 @@ import { Supervisor } from "./supervisor";
 @Entity({name: "RepartidorPorSupervisor"})
 export class RepartidorPorSupervisor extends BaseEntity {
 
+  @PrimaryGeneratedColumn()
+  idPermisoRepartidorPorSupervisor!: number;
 
   @CreateDateColumn()
   fechaCreacion!: Date;

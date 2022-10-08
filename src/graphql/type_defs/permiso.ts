@@ -17,6 +17,7 @@ export const PermisoType = new GraphQLObjectType({
     accion: { type: GraphQLString },
     fechaCreacion: { type: GraphQLString },
     usuarioCreacion: { type: GraphQLString },
+    empresa: { type: GraphQLID },
   }),
 });
 

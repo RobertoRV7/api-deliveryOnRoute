@@ -14,11 +14,12 @@ export const CREATE_ROL = {
     nombre: { type: GraphQLString },
     descripcion: { type: GraphQLString },
     usuarioCreacion: { type: GraphQLString },
+    empresa: { type : GraphQLID}
   },
   async resolve(parent: any, args: any, req: any) {
     Logger.debug("graphql.mutation.user.CREATE_ROL");
 
-    const { nombre, descripcion, usuarioCreacion } = args;
+    const { nombre, descripcion, usuarioCreacion, empresa } = args;
 
     try {
       auth.verifyAuth(req);
@@ -33,6 +34,7 @@ export const CREATE_ROL = {
         nombre,
         descripcion,
         usuarioCreacion,
+        empresa
       });
     } catch (error) {
       return msg.replyError(error);
@@ -51,15 +53,16 @@ export const UPDATE_ROL_BY_ID = {
     idRol: { type: GraphQLID },
     nombre: { type: GraphQLString },
     descripcion: { type: GraphQLString },
+    empresa: { type: GraphQLID }
   },
   async resolve(parent: any, args: any, req: any) {
     Logger.debug("mutations.rol.UPDATE_ROL_BY_ID");
-    const { idRol, nombre, descripcion } = args;
+    const { idRol, nombre, descripcion, empresa } = args;
     try {
       auth.verifyAuth(req);
       await Rol.update(
         { idRol },
-        { nombre, descripcion}
+        { nombre, descripcion, empresa}
       );
     } catch (error) {
       return msg.replyError(error);
